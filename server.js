@@ -3,9 +3,11 @@ const express = require("express");  // Express framework for building web appli
 const morgan = require("morgan");    // Morgan for logging HTTP requests
 const dotenv = require("dotenv");    // dotenv for loading environment variables
 const colors = require("colors");    // colors for styling console logs
+const connectDB = require("./config/db");
 
 // Load environment variables from .env file
 dotenv.config();
+connectDB();
 
 // Initialize an Express application
 const app = express();
@@ -17,11 +19,15 @@ app.use(express.json());
 app.use(morgan("dev"));
 
 // Define a test route
-app.get("/", (req, res) => {
-  res.status(200).send({
-    message: "server running", // Response message when accessing the root route
-  });
-});
+// app.get("/", (req, res) => {
+//   res.status(200).send({
+//     message: "server running", // Response message when accessing the root route
+//   });
+// });
+
+
+// routes
+app.use('/api/v1/user', require("./routes/userRoutes")
 
 // Define the server port, defaulting to 8080 if not provided in environment variables
 const port = process.env.PORT || 8080;
