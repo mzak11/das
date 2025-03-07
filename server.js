@@ -27,7 +27,7 @@ app.use(morgan("dev"));
 
 
 // routes
-app.use('/api/v1/user', require("./routes/userRoutes")
+app.use('/api/v1/user', require("./routes/userRoutes"))
 
 // Define the server port, defaulting to 8080 if not provided in environment variables
 const port = process.env.PORT || 8080;
